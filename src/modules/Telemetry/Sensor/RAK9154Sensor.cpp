@@ -202,6 +202,7 @@ bool RAK9154Sensor::isCharging()
 {
     return (dc_cur > 0) ? true : false;
 }
+
 void RAK9154Sensor::setLastRead(uint32_t lastRead)
 {
     this->lastRead = lastRead;
