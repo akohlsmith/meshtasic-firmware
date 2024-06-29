@@ -432,8 +432,6 @@ class AnalogBatteryLevel : public HasBatteryLevel
 #elif HAS_TELEMETRY && !defined(ARCH_PORTDUINO) && !defined(HAS_PMU) && !MESHTASTIC_EXCLUDE_ENVIRONMENTAL_SENSOR
         if (hasINA()) {
             return (getINACurrent() > 0) ? OptTrue : OptFalse;
-        } else {
-            return OptFalse;
         }
 #else
 #if HAS_TELEMETRY && !MESHTASTIC_EXCLUDE_ENVIRONMENTAL_SENSOR && !defined(ARCH_PORTDUINO) && !defined(ARCH_STM32WL) &&           \
@@ -448,9 +446,11 @@ class AnalogBatteryLevel : public HasBatteryLevel
             return getINACurrent() < 0;
 #endif
         }
+
+#endif
+#endif
+        /* if all other methods fail, fall back to "do we have a battery and is there external power" */
         return isBatteryConnect() && isVbusIn();
-#endif
-#endif
     }
 
   private:
