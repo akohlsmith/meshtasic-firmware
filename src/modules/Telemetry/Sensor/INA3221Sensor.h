@@ -50,3 +50,4 @@ struct _INA3221Measurements {
 };
 
 #endif
+
