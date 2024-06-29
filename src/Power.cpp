@@ -122,7 +122,6 @@ class HasBatteryLevel
 
     virtual bool isVbusIn() { return false; }
     virtual bool isCharging() { return false; }
-    virtual bool hasINA() { return false; }
 };
 #endif
 
@@ -667,7 +666,7 @@ bool Power::analogInit()
     return true;
 #elif HAS_TELEMETRY && !MESHTASTIC_EXCLUDE_ENVIRONMENTAL_SENSOR && !defined(ARCH_PORTDUINO)
     batteryLevel = &analogLevel;
-    return batteryLevel->hasINA();
+    return batteryLevel->isBatteryConnect();
 
 #else
     return false;
