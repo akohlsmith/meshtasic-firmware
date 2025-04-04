@@ -5,9 +5,10 @@
 #include "../mesh/generated/meshtastic/telemetry.pb.h"
 #include "TelemetrySensor.h"
 #include "VoltageSensor.h"
+#include "CurrentSensor.h"
 #include <Adafruit_INA260.h>
 
-class INA260Sensor : public TelemetrySensor, VoltageSensor
+class INA260Sensor : public TelemetrySensor, VoltageSensor, CurrentSensor
 {
   private:
     Adafruit_INA260 ina260 = Adafruit_INA260();
